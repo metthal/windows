@@ -21,4 +21,4 @@ RUN powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; iex (
 RUN choco install -Y cmake --version %CMAKE_VERSION% --installargs 'ADD_CMAKE_TO_PATH=System'
 
 ENTRYPOINT C:\BuildTools\Common7\Tools\VsDevCmd.bat &&
-CMD ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
+CMD powershell.exe -NoLogo -ExecutionPolicy Bypass
