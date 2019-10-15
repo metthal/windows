@@ -1,0 +1,7 @@
+# escape=`
+
+FROM metthal/windows:vs2019-cmake3.15.4
+
+ARG PYTHON_VERSION
+
+RUN choco install -Y python3 --version ${PYTHON_VERSION}
