@@ -19,7 +19,7 @@ fi
 CMAKE_VERSION="$2"
 PYTHON_VERSION="$3"
 
-IMAGE_NAME="metthal/vs$1-cmake${CMAKE_VERSION}"
+IMAGE_NAME="metthal/windows:vs$1-cmake${CMAKE_VERSION}"
 DOCKER_BUILD_ARGS=(--build-arg VS_VERSION=${VS_VERSION} --build-arg CMAKE_VERSION=${CMAKE_VERSION})
 if [ ! -z "$PYTHON_VERSION" ]; then
 	DOCKER_BUILD_ARGS[1]="VS_VERSION=$1"
