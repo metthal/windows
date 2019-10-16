@@ -29,4 +29,4 @@ fi
 
 echo "Run this command:"
 echo
-echo "docker build ${DOCKER_BUILD_ARGS[@]} -t ${IMAGE_NAME} -f ${DOCKERFILE}"
+echo "docker build ${DOCKER_BUILD_ARGS[@]} -t ${IMAGE_NAME} -f ${DOCKERFILE} ."
