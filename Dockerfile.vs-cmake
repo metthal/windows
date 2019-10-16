@@ -2,13 +2,14 @@
 
 FROM mcr.microsoft.com/windows/servercore:10.0.14393.2848
 
-ARG CMAKE_VERSION="3.15.4"
+ARG VS_VERSION
+ARG CMAKE_VERSION
 
 SHELL ["cmd", "/S", "/C"]
 
-ADD https://aka.ms/vs/15/release/channel C:\TEMP\VisualStudio.chman
+ADD https://aka.ms/vs/%VS_VERSION%/release/channel C:\TEMP\VisualStudio.chman
 
-ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\TEMP\vs_buildtools.exe
+ADD https://aka.ms/vs/%VS_VERSION%/release/vs_buildtools.exe C:\TEMP\vs_buildtools.exe
 RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
 	--channelUri C:\TEMP\VisualStudio.chman `
 	--installChannelUri C:\TEMP\VisualStudio.chman `
