@@ -1,6 +1,6 @@
 # escape=`
 
-FROM mcr.microsoft.com/windows/servercore:10.0.14393.2848
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2016
 
 ARG VS_VERSION
 ARG CMAKE_VERSION
@@ -17,7 +17,7 @@ RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
 	--installPath C:\BuildTools `
 	|| IF "%ERRORLEVEL%"=="3010" EXIT 0
 
-RUN powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+RUN powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
 
 RUN choco install -Y cmake --version %CMAKE_VERSION% --installargs 'ADD_CMAKE_TO_PATH=System'
 

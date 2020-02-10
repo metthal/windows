@@ -1,7 +1,9 @@
 # escape=`
 
 ARG VS_VERSION
-FROM metthal/windows:vs${VS_VERSION}-cmake3.15.4
+ARG CMAKE_VERSION
+
+FROM metthal/windows:vs${VS_VERSION}-cmake${CMAKE_VERSION}
 
 ARG PYTHON_VERSION
 
