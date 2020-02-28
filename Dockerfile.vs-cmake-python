@@ -3,11 +3,8 @@
 ARG VS_VERSION
 ARG CMAKE_VERSION
 
-FROM metthal/windows:vs${VS_VERSION}-cmake${CMAKE_VERSION}
+FROM metthal/windows:ltsc2019-vs${VS_VERSION}-cmake${CMAKE_VERSION}
 
 ARG PYTHON_VERSION
 
 RUN choco install -Y python3 --version %PYTHON_VERSION%
-
-# Enable support for paths longer than 260 characters
-RUN reg add HKLM\SYSTEM\CurrentControlSet\Control\FileSystem /v LongPathsEnabled /t REG_DWORD /d 1 /f

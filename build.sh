@@ -19,7 +19,7 @@ fi
 CMAKE_VERSION="$2"
 PYTHON_VERSION="$3"
 
-IMAGE_NAME="metthal/windows:vs$1-cmake${CMAKE_VERSION}"
+IMAGE_NAME="metthal/windows:ltsc2019-vs$1-cmake${CMAKE_VERSION}"
 DOCKER_BUILD_ARGS=(--build-arg VS_VERSION=${VS_VERSION} --build-arg CMAKE_VERSION=${CMAKE_VERSION})
 if [ ! -z "$PYTHON_VERSION" ]; then
 	DOCKER_BUILD_ARGS[1]="VS_VERSION=$1"
@@ -29,4 +29,4 @@ fi
 
 echo "Run this command:"
 echo
-echo "docker build ${DOCKER_BUILD_ARGS[@]} -t ${IMAGE_NAME} -f ${DOCKERFILE} ."
+echo "docker build -m 3gb ${DOCKER_BUILD_ARGS[@]} -t ${IMAGE_NAME} -f ${DOCKERFILE} ."
